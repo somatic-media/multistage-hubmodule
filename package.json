@@ -1,0 +1,15 @@
+{
+  "name": "Form wizard with separated components",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://codesandbox.io/s/l9mz5zn7yz",
+  "main": "index.js",
+  "dependencies": {
+    "vue-router": "3.0.1",
+    "vue-form-wizard": "0.8.1",
+    "vue": "2.5.2",
+    "json-pretty-html": "1.0.2",
+    "element-ui": "2.0.8"
+  }
+}
