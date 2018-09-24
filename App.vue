@@ -14,6 +14,7 @@
       <tab-content title="Additional Info" icon="ti-settings"
 			:before-change="() => validate('secondStep')">
         <second-step ref="secondStep" @on-validate="onStepValidate"></second-step>
+        
       </tab-content>
       <tab-content title="Last step" icon="ti-check">
 				Your data
@@ -30,6 +31,9 @@ import FirstStep from "./components/FirstStep.vue";
 import SecondStep from "./components/SecondStep.vue";
 import prettyJSON from "./prettyJson.js";
 import axios from 'axios';
+import client from './client'
+
+const HAPIKEY = ''
 
 export default {
   name: "app",
@@ -51,20 +55,20 @@ export default {
   methods: {
     onComplete() {
       alert("Yay. Done!");
+     axios({
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*',
     },
-    hubSubmit() {
-      axios.post('https://api.hubapi.com/contacts/v1/contact&hapikey=', {
-    firstname: this.finalModel.firstName,
-    lastname: this.finalModel.lastName,
-    email: this.finalModel.email
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
+    uri: "https://api.hubapi.com/contacts/v1/contact?hapikey=105fc572-8ff1-4d9e-bb4a-4dc8c2cbebcf",
+    data: {
+      firstname: this.finalModel.firstName,
+      lastname: this.finalModel.lastName,
+      email: this.finalModel.email
+    }
   });
-  },
+},
     forceClearError() {
       this.$refs.wizard.tabs[this.activeTabIndex].validationError = null;
     },
