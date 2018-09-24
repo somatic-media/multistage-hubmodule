@@ -14,51 +14,56 @@
 
 <script>
 export default {
-  data(){
-		return {
+  data() {
+    return {
       model: {
-        firstName: '',
-        lastName: '',
-        email: ''
+        firstName: "",
+        lastName: "",
+        email: ""
       },
       rules: {
-        firstName: [{
-          required: true,
-          message: 'First name is required',
-          trigger: 'blur'
-        }],
-        lastName: [{
-          required: true,
-          message: 'Last name is required',
-          trigger: 'blur'
-        }],
-         email: [{
-          required: true,
-          message: 'Email is required',
-          trigger: 'blur'
-        },
-        {
-          type: 'email',
-          message: 'Invalid email',
-          trigger: 'change'
-        }],
+        firstName: [
+          {
+            required: true,
+            message: "First name is required",
+            trigger: "blur"
+          }
+        ],
+        lastName: [
+          {
+            required: true,
+            message: "Last name is required",
+            trigger: "blur"
+          }
+        ],
+        email: [
+          {
+            required: true,
+            message: "Email is required",
+            trigger: "blur"
+          },
+          {
+            type: "email",
+            message: "Invalid email",
+            trigger: "change"
+          }
+        ]
       }
-	}},
+    };
+  },
   methods: {
     validate() {
       return new Promise((resolve, reject) => {
-        this.$refs.form.validate((valid) => {
-          this.$emit('on-validate', valid, this.model)
+        this.$refs.form.validate(valid => {
+          this.$emit("on-validate", valid, this.model);
           resolve(valid);
         });
-      })
-
-    }
+      });
+    },
+    submitform() {}
   }
-
-}
+};
 </script>
 
 <style>
-
 </style>

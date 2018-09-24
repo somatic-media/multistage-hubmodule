@@ -6,10 +6,12 @@
   "homepage": "https://codesandbox.io/s/l9mz5zn7yz",
   "main": "index.js",
   "dependencies": {
-    "vue-router": "3.0.1",
-    "vue-form-wizard": "0.8.1",
-    "vue": "2.5.2",
+    "axios": "0.18.0",
+    "element-ui": "2.0.8",
     "json-pretty-html": "1.0.2",
-    "element-ui": "2.0.8"
+    "request": "2.88.0",
+    "vue": "2.5.2",
+    "vue-form-wizard": "0.8.1",
+    "vue-router": "3.0.1"
   }
 }

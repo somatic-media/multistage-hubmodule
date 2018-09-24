@@ -25,9 +25,12 @@
 </template>
 
 <script>
+
 import FirstStep from "./components/FirstStep.vue";
 import SecondStep from "./components/SecondStep.vue";
 import prettyJSON from "./prettyJson.js";
+import axios from 'axios';
+
 export default {
   name: "app",
   components: {
@@ -49,6 +52,19 @@ export default {
     onComplete() {
       alert("Yay. Done!");
     },
+    hubSubmit() {
+      axios.post('https://api.hubapi.com/contacts/v1/contact&hapikey=', {
+    firstname: this.finalModel.firstName,
+    lastname: this.finalModel.lastName,
+    email: this.finalModel.email
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
     forceClearError() {
       this.$refs.wizard.tabs[this.activeTabIndex].validationError = null;
     },
