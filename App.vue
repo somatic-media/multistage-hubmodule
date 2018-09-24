@@ -26,14 +26,13 @@
 </template>
 
 <script>
-
 import FirstStep from "./components/FirstStep.vue";
 import SecondStep from "./components/SecondStep.vue";
 import prettyJSON from "./prettyJson.js";
-import axios from 'axios';
-import client from './client'
+import axios from "axios";
+import client from "./client";
 
-const HAPIKEY = ''
+const HAPIKEY = "";
 
 export default {
   name: "app",
@@ -55,20 +54,24 @@ export default {
   methods: {
     onComplete() {
       alert("Yay. Done!");
-     axios({
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Access-Control-Allow-Origin': '*',
+      axios({
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=UTF-8",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept",
+          "Access-Control-Allow-Origin": "*"
+        },
+        uri:
+          "https://api.hubapi.com/contacts/v1/contact?hapikey=105fc572-8ff1-4d9e-bb4a-4dc8c2cbebcf",
+        data: {
+          firstname: this.finalModel.firstName,
+          lastname: this.finalModel.lastName,
+          email: this.finalModel.email
+        },
+        crossdomain: true
+      });
     },
-    uri: "https://api.hubapi.com/contacts/v1/contact?hapikey=105fc572-8ff1-4d9e-bb4a-4dc8c2cbebcf",
-    data: {
-      firstname: this.finalModel.firstName,
-      lastname: this.finalModel.lastName,
-      email: this.finalModel.email
-    }
-  });
-},
     forceClearError() {
       this.$refs.wizard.tabs[this.activeTabIndex].validationError = null;
     },
